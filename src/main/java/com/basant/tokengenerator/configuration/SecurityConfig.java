@@ -21,7 +21,7 @@ public class SecurityConfig {
         http.csrf().disable()
                 .authorizeRequests()
                 .requestMatchers(HttpMethod.GET, "/publicKey").permitAll()
-                .requestMatchers(HttpMethod.POST, "/signToken").permitAll()
+                .requestMatchers(HttpMethod.POST, "/token").permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic();
         return http.build();
