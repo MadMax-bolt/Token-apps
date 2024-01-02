@@ -20,7 +20,7 @@ public class SeleniumTests {
         options.addArguments("--headless"); // Run headless (without GUI)
         driver = new ChromeDriver(options);
 
-        baseUrl = "http://localhost:8080"; // Your application base URL
+        baseUrl = "http://localhost:8181"; // Your application base URL
     }
 
     @AfterEach
