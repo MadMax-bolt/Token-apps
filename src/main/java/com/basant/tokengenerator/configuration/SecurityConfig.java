@@ -22,6 +22,10 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .requestMatchers(HttpMethod.GET, "/publicKey").permitAll()
                 .requestMatchers(HttpMethod.POST, "/token").permitAll()
+                // Permit access to Swagger UI resources
+                .requestMatchers("/swagger-ui/**").permitAll()
+                // Permit access to Swagger API documentation
+                .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic();
         return http.build();
@@ -41,4 +45,6 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+
 }
