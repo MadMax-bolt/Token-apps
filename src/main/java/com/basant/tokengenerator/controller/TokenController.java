@@ -4,6 +4,7 @@ import com.basant.tokengenerator.model.JWKResponseList;
 import com.basant.tokengenerator.model.RequestToken;
 import com.basant.tokengenerator.model.ResponseToken;
 import com.basant.tokengenerator.service.TokenService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +23,8 @@ public class TokenController {
     }
 
     @GetMapping(value = "/publicKey",
-            produces = {"application/json"},
-            consumes = {"application/json"})
+            produces = {"application/json"})
+    @Operation(summary = "Get public keys")
     public ResponseEntity<JWKResponseList> getPublicKey() {
         try {
             JWKResponseList jwkResponseList = tokenService.getPublicKey();
@@ -36,6 +37,7 @@ public class TokenController {
     @PostMapping(value = "/token",
             produces = {"application/json"},
             consumes = {"application/json"})
+    @Operation(summary = "Get JWT Token")
     public ResponseEntity<ResponseToken> signToken(@RequestBody RequestToken requestToken) {
         try {
             return ResponseEntity.ok(tokenService.getToken(requestToken)
