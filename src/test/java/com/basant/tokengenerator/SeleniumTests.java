@@ -34,6 +34,7 @@ public class SeleniumTests {
     public void testSwaggerEndpoint() {
         driver.get(baseUrl + "/swagger-ui.html");
         String pageContent = driver.getPageSource();
+        System.out.println(pageContent + "basant");
 
         // Example assertion: Check if certain content is present in the response page
         assertTrue(pageContent.contains("OpenAPI definition")); // Modify with your expected content
